@@ -1,0 +1,25 @@
+{
+  "name": "emgag/vg-wort-message-api",
+  "description": "PHP library for VG Wort Messages",
+  "keywords": [
+    "vg-wort",
+    "tom"
+  ],
+  "homepage": "https://github.com/emgag/vg-wort-message-api",
+  "type": "library",
+  "require": {
+    "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dominik Dassow",
+      "email": "dd@film.tv"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Emgag\\VGWort\\": "src/"
+    }
+  }
+}
