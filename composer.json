@@ -7,9 +7,6 @@
   ],
   "homepage": "https://github.com/emgag/vg-wort-message-api",
   "type": "library",
-  "require": {
-    "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4"
-  },
   "license": "MIT",
   "authors": [
     {
@@ -19,7 +16,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "Emgag\\VGWort\\": "src/"
+      "Emgag\\VGWort\\": "src/",
+      "VGWort\\MessageService\\": "src/v1_11/"
     }
   }
 }

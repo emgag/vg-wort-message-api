@@ -2,6 +2,15 @@
 
 namespace Emgag\VGWort;
 
+use VGWort\MessageService\Authors;
+use VGWort\MessageService\Involved;
+use VGWort\MessageService\MessageText;
+use VGWort\MessageService\newMessageRequest;
+use VGWort\MessageService\Parties;
+use VGWort\MessageService\Text;
+use VGWort\MessageService\Webrange;
+use VGWort\MessageService\Webranges;
+
 /**
  * Request package to send to VG Wort Message API
  */
@@ -27,7 +36,7 @@ class MessageRequest
             return;
         }
 
-        $this->newMessageRequest = new \newMessageRequest(
+        $this->newMessageRequest = new newMessageRequest(
             $messageData[self::PARTIES],
             $messageData[self::MESSAGE_TEXT],
             $messageData[self::WEBRANGES],
@@ -36,7 +45,7 @@ class MessageRequest
     }
 
     /**
-     * @return \newMessageRequest
+     * @return newMessageRequest
      */
     public function get()
     {
@@ -61,36 +70,35 @@ class MessageRequest
             $authorCollection[] = $this->createInvolved($author);
         }
 
-        $authors = new \Authors($authorCollection);
-        $messageData[self::PARTIES] = new \Parties($authors);
+        $authors = new Authors($authorCollection, null);
+        $messageData[self::PARTIES] = new Parties($authors, null);
 
         // Text
         if (!($text = $data['text']) || empty($text) || !($title = $data['title']) || empty($title)) {
             return [];
         }
 
-        $text                            = new \Text(null, base64_encode($text), null);
-        $messageData[self::MESSAGE_TEXT] = new \MessageText($title, $text, false);
+        $text                            = new Text(null, base64_encode($text), null);
+        $messageData[self::MESSAGE_TEXT] = new MessageText($title, $text, false);
 
         // Webranges
         if (!($url = $data['url']) || empty($url)) {
             return [];
         }
 
-        $webrange = new \Webrange([$url]);
-        $messageData[self::WEBRANGES] = new \Webranges([$webrange]);
+        $webrange = new Webrange([$url]);
+        $messageData[self::WEBRANGES] = new Webranges([$webrange]);
 
         return $messageData;
     }
 
     /**
      * @param array $data
-     * @return \Involved
+     * @return Involved
      */
     private function createInvolved(array $data)
     {
-        $involved = new \Involved($data['firstName'], $data['surName'], null);
-        $involved->setCardNumber($data['cardNumber']);
+        $involved = new Involved($data['firstName'], $data['surName'], $data['cardNumber'], null);
 
         return $involved;
     }

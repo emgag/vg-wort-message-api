@@ -3,8 +3,6 @@
 namespace Emgag\VGWort;
 
 use SoapFault;
-use Wsdl2PhpGenerator\Generator;
-use Wsdl2PhpGenerator\Config;
 
 /**
  * Service for using the VG Wort Message API
@@ -18,27 +16,13 @@ class MessageService
      *
      * @param string $username
      * @param string $password
-     * @param string $version
      */
-    public function __construct($username, $password, $version = '1.11')
+    public function __construct($username, $password)
     {
-        $generator = new Generator();
-        $generator->generate(
-            new Config([
-                'inputFile'         => 'https://tom.vgwort.de/services/' . $version . '/messageService.wsdl',
-                'outputDir'         => '/tmp',
-                'soapClientOptions' => [
-                    'authentication'     => SOAP_AUTHENTICATION_BASIC,
-                    'login'              => $username,
-                    'password'           => $password,
-                    'connection_timeout' => 60
-                ]
-            ])
-        );
-
-        require '/tmp/autoload.php';
-
-        $this->messageService = new \MessageService();
+        $this->messageService = new \VGWort\MessageService\MessageService([
+            "username" => $username,
+            "password" => $password
+        ]);
     }
 
     /**
