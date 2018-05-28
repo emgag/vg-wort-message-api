@@ -1,6 +1,6 @@
 <?php
 
-namespace VGWort\MessageService;
+namespace Emgag\VGWort\v1_11;
 
 include_once('newMessageRequest.php');
 include_once('newMessageResponse.php');
@@ -45,39 +45,39 @@ class MessageService extends \SoapClient
      * @access private
      */
     private static $classmap = array(
-      'newMessageRequest' => 'VGWort\MessageService\newMessageRequest',
-      'newMessageResponse' => 'VGWort\MessageService\newMessageResponse',
-      'newMessageFault' => 'VGWort\MessageService\newMessageFault',
-      'addWebrangeRequest' => 'VGWort\MessageService\addWebrangeRequest',
-      'addWebrangeResponse' => 'VGWort\MessageService\addWebrangeResponse',
-      'addWebrangeFault' => 'VGWort\MessageService\addWebrangeFault',
-      'qualityControlRequest' => 'VGWort\MessageService\qualityControlRequest',
-      'qualityControlResponse' => 'VGWort\MessageService\qualityControlResponse',
-      'qualityControlFault' => 'VGWort\MessageService\qualityControlFault',
-      'checkAuthorRequest' => 'VGWort\MessageService\checkAuthorRequest',
-      'checkAuthorResponse' => 'VGWort\MessageService\checkAuthorResponse',
-      'checkAuthorFault' => 'VGWort\MessageService\checkAuthorFault',
-      'researchMetisMessagesRequest' => 'VGWort\MessageService\researchMetisMessagesRequest',
-      'researchMetisMessagesResponse' => 'VGWort\MessageService\researchMetisMessagesResponse',
-      'researchMetisMessagesFault' => 'VGWort\MessageService\researchMetisMessagesFault',
-      'getPixelsWithoutInvolvedMessageRequest' => 'VGWort\MessageService\getPixelsWithoutInvolvedMessageRequest',
-      'getPixelsWithoutInvolvedMessageResponse' => 'VGWort\MessageService\getPixelsWithoutInvolvedMessageResponse',
-      'getPixelsWithoutInvolvedMessageFault' => 'VGWort\MessageService\getPixelsWithoutInvolvedMessageFault',
-      'ResearchedMetisMessage' => 'VGWort\MessageService\ResearchedMetisMessage',
-      'MessageText' => 'VGWort\MessageService\MessageText',
-      'QualityControlValues' => 'VGWort\MessageService\QualityControlValues',
-      'Text' => 'VGWort\MessageService\Text',
-      'Parties' => 'VGWort\MessageService\Parties',
-      'Authors' => 'VGWort\MessageService\Authors',
-      'Translators' => 'VGWort\MessageService\Translators',
-      'Involved' => 'VGWort\MessageService\Involved',
-      'InvolvedWithoutContract' => 'VGWort\MessageService\InvolvedWithoutContract',
-      'Webranges' => 'VGWort\MessageService\Webranges',
-      'Webrange' => 'VGWort\MessageService\Webrange',
-      'tomFault' => 'VGWort\MessageService\tomFault',
-      'okMessage' => 'VGWort\MessageService\okMessage',
-      'PixelWithoutInvolvedMessage' => 'VGWort\MessageService\PixelWithoutInvolvedMessage',
-      'Participant' => 'VGWort\MessageService\Participant');
+      'newMessageRequest' => 'Emgag\VGWort\v1_11\newMessageRequest',
+      'newMessageResponse' => 'Emgag\VGWort\v1_11\newMessageResponse',
+      'newMessageFault' => 'Emgag\VGWort\v1_11\newMessageFault',
+      'addWebrangeRequest' => 'Emgag\VGWort\v1_11\addWebrangeRequest',
+      'addWebrangeResponse' => 'Emgag\VGWort\v1_11\addWebrangeResponse',
+      'addWebrangeFault' => 'Emgag\VGWort\v1_11\addWebrangeFault',
+      'qualityControlRequest' => 'Emgag\VGWort\v1_11\qualityControlRequest',
+      'qualityControlResponse' => 'Emgag\VGWort\v1_11\qualityControlResponse',
+      'qualityControlFault' => 'Emgag\VGWort\v1_11\qualityControlFault',
+      'checkAuthorRequest' => 'Emgag\VGWort\v1_11\checkAuthorRequest',
+      'checkAuthorResponse' => 'Emgag\VGWort\v1_11\checkAuthorResponse',
+      'checkAuthorFault' => 'Emgag\VGWort\v1_11\checkAuthorFault',
+      'researchMetisMessagesRequest' => 'Emgag\VGWort\v1_11\researchMetisMessagesRequest',
+      'researchMetisMessagesResponse' => 'Emgag\VGWort\v1_11\researchMetisMessagesResponse',
+      'researchMetisMessagesFault' => 'Emgag\VGWort\v1_11\researchMetisMessagesFault',
+      'getPixelsWithoutInvolvedMessageRequest' => 'Emgag\VGWort\v1_11\getPixelsWithoutInvolvedMessageRequest',
+      'getPixelsWithoutInvolvedMessageResponse' => 'Emgag\VGWort\v1_11\getPixelsWithoutInvolvedMessageResponse',
+      'getPixelsWithoutInvolvedMessageFault' => 'Emgag\VGWort\v1_11\getPixelsWithoutInvolvedMessageFault',
+      'ResearchedMetisMessage' => 'Emgag\VGWort\v1_11\ResearchedMetisMessage',
+      'MessageText' => 'Emgag\VGWort\v1_11\MessageText',
+      'QualityControlValues' => 'Emgag\VGWort\v1_11\QualityControlValues',
+      'Text' => 'Emgag\VGWort\v1_11\Text',
+      'Parties' => 'Emgag\VGWort\v1_11\Parties',
+      'Authors' => 'Emgag\VGWort\v1_11\Authors',
+      'Translators' => 'Emgag\VGWort\v1_11\Translators',
+      'Involved' => 'Emgag\VGWort\v1_11\Involved',
+      'InvolvedWithoutContract' => 'Emgag\VGWort\v1_11\InvolvedWithoutContract',
+      'Webranges' => 'Emgag\VGWort\v1_11\Webranges',
+      'Webrange' => 'Emgag\VGWort\v1_11\Webrange',
+      'tomFault' => 'Emgag\VGWort\v1_11\tomFault',
+      'okMessage' => 'Emgag\VGWort\v1_11\okMessage',
+      'PixelWithoutInvolvedMessage' => 'Emgag\VGWort\v1_11\PixelWithoutInvolvedMessage',
+      'Participant' => 'Emgag\VGWort\v1_11\Participant');
 
     /**
      * @param array $options A array of config values

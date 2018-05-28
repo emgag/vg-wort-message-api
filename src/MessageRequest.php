@@ -2,14 +2,14 @@
 
 namespace Emgag\VGWort;
 
-use VGWort\MessageService\Authors;
-use VGWort\MessageService\Involved;
-use VGWort\MessageService\MessageText;
-use VGWort\MessageService\newMessageRequest;
-use VGWort\MessageService\Parties;
-use VGWort\MessageService\Text;
-use VGWort\MessageService\Webrange;
-use VGWort\MessageService\Webranges;
+use Emgag\VGWort\v1_11\Authors;
+use Emgag\VGWort\v1_11\Involved;
+use Emgag\VGWort\v1_11\MessageText;
+use Emgag\VGWort\v1_11\newMessageRequest;
+use Emgag\VGWort\v1_11\Parties;
+use Emgag\VGWort\v1_11\Text;
+use Emgag\VGWort\v1_11\Webrange;
+use Emgag\VGWort\v1_11\Webranges;
 
 /**
  * Request package to send to VG Wort Message API

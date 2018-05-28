@@ -1,6 +1,6 @@
 <?php
 
-namespace VGWort\MessageService;
+namespace Emgag\VGWort\v1_11;
 
 class Webrange
 {

@@ -19,7 +19,7 @@ class MessageService
      */
     public function __construct($username, $password)
     {
-        $this->messageService = new \VGWort\MessageService\MessageService([
+        $this->messageService = new \Emgag\VGWort\v1_11\MessageService([
             "username" => $username,
             "password" => $password
         ]);

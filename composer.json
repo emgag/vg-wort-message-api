@@ -16,8 +16,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Emgag\\VGWort\\": "src/",
-      "VGWort\\MessageService\\": "src/v1_11/"
+      "Emgag\\VGWort\\": "src/"
     }
   }
 }
