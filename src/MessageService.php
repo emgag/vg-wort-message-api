@@ -20,8 +20,10 @@ class MessageService
     public function __construct($username, $password)
     {
         $this->messageService = new \Emgag\VGWort\v1_11\MessageService([
-            "username" => $username,
-            "password" => $password
+            "authentication"     => SOAP_AUTHENTICATION_BASIC,
+            "login"              => $username,
+            "password"           => $password,
+            "connection_timeout" => 60
         ]);
     }
 
