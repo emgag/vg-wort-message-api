@@ -25,7 +25,7 @@ $response = $messageService->newMessage(
         ["firstName" => "", "surName" => "", "cardNumber" => ""]
     ],
     $title, // Title of this message
-    $test, // Text of this message (plain text)
+    $text, // Text of this message (plain text)
     $url // URL of this message
 );
 ```
