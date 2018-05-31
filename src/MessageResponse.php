@@ -2,6 +2,9 @@
 
 namespace Emgag\VGWort;
 
+use Emgag\VGWort\v1_11\newMessageFault;
+use Emgag\VGWort\v1_11\newMessageResponse;
+
 /**
  * Response package that comes from the VG Wort Message API
  */
@@ -13,8 +16,8 @@ class MessageResponse
     /**
      * MessageResponse constructor.
      *
-     * @param null $newMessageResponse
-     * @param null $newMessageFault
+     * @param newMessageResponse $newMessageResponse
+     * @param newMessageFault $newMessageFault
      */
     public function __construct($newMessageResponse = null, $newMessageFault = null)
     {
@@ -25,7 +28,7 @@ class MessageResponse
     /**
      * @return bool
      */
-    public function isValid()
+    public function isValid(): bool
     {
         return !is_null($this->newMessageResponse) && is_null($this->newMessageFault);
     }
@@ -33,7 +36,7 @@ class MessageResponse
     /**
      * @return null|string
      */
-    public function errorMessage()
+    public function errorMessage(): ?string
     {
         if ($this->isValid()) {
             return null;
@@ -43,17 +46,17 @@ class MessageResponse
     }
 
     /**
-     * @param $newMessageResponse
+     * @param newMessageResponse $newMessageResponse
      */
-    public function success($newMessageResponse)
+    public function success(newMessageResponse $newMessageResponse)
     {
         $this->newMessageResponse = $newMessageResponse;
     }
 
     /**
-     * @param $newMessageFault
+     * @param newMessageFault $newMessageFault
      */
-    public function error($newMessageFault)
+    public function error(newMessageFault $newMessageFault)
     {
         $this->newMessageFault = $newMessageFault;
     }

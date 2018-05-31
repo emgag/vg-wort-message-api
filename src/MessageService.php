@@ -37,7 +37,7 @@ class MessageService
      * @param string $url
      * @return MessageResponse|null
      */
-    public function newMessage($id, array $authors, $title, $text, $url)
+    public function newMessage(string $id, array $authors, string $title, string $text, string $url): ?MessageResponse
     {
         if (empty($id) || count($authors) < 1 || empty($title) || empty($text) || empty($url)) {
             return null;

@@ -1,9 +1,10 @@
 {
   "name": "emgag/vg-wort-message-api",
-  "description": "PHP library for VG Wort Messages",
+  "description": "VG Wort METIS messages API helper",
   "keywords": [
     "vg-wort",
-    "tom"
+    "tom",
+    "metis"
   ],
   "homepage": "https://github.com/emgag/vg-wort-message-api",
   "type": "library",
@@ -14,6 +15,13 @@
       "email": "dd@film.tv"
     }
   ],
+  "require": {
+    "php": ">=7.1",
+    "ext-soap": "*"
+  },
+  "require-dev": {
+    "wsdl2phpgenerator/wsdl2phpgenerator": "^3.4"
+  },
   "autoload": {
     "psr-4": {
       "Emgag\\VGWort\\": "src/"

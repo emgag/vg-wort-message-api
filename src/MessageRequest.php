@@ -25,9 +25,9 @@ class MessageRequest
     /**
      * MessageRequest constructor.
      *
-     * @param $data
+     * @param array $data
      */
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $id          = $data['id'];
         $messageData = $this->verifyMessageData($data);
@@ -47,16 +47,16 @@ class MessageRequest
     /**
      * @return newMessageRequest
      */
-    public function get()
+    public function get(): newMessageRequest
     {
         return $this->newMessageRequest;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @return array
      */
-    private function verifyMessageData($data)
+    private function verifyMessageData(array $data): array
     {
         $messageData = [];
 
@@ -96,7 +96,7 @@ class MessageRequest
      * @param array $data
      * @return Involved
      */
-    private function createInvolved(array $data)
+    private function createInvolved(array $data): Involved
     {
         $involved = new Involved($data['firstName'], $data['surName'], $data['cardNumber'], null);
 
