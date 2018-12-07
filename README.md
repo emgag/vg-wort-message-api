@@ -13,6 +13,8 @@ composer require emgag/vg-wort-message-api
 
 ## Usage
 
+**MessageService**
+
 ```PHP
 use Emgag\VGWort\MessageService;
 
@@ -29,14 +31,16 @@ $response = $messageService->newMessage(
     $urls // URLs of this message
 );
 ```
-## URLs
-It's possible to provide multiple URLs (or Webranges). The URLs ``$urls`` could be in one of these formats:
+
+It's possible to provide multiple URLs. The URLs ``$urls`` could be in one of these formats:
+
 - As an simple array.
 ```PHP
 $urls = [
     "http://example.com/path/to/file.html"
 ];
 ```
+
 - As an multi-dimensional array. The keys will be ignored.
 ```PHP
 $urls = [
@@ -48,6 +52,24 @@ $urls = [
     ]
 ];
 ```
+
+**PixelService**
+
+```PHP
+use Emgag\VGWort\PixelService;
+
+$pixelService = new PixelService($username, $password);
+
+try {
+    $ids = $pixelService->overview(PixelService::TYPE_MINDESTZUGRIFF);
+} catch (\Exception $e) {
+    ...
+}
+```
+
+Allowed types:
+- `PixelService::TYPE_MINDESTZUGRIFF`
+- `PixelService::TYPE_ANTEILIGER_MINDESTZUGRIFF`
 
 ## License
 
