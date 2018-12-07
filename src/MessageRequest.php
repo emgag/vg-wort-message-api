@@ -2,14 +2,14 @@
 
 namespace Emgag\VGWort;
 
-use Emgag\VGWort\v1_11\Authors;
-use Emgag\VGWort\v1_11\Involved;
-use Emgag\VGWort\v1_11\MessageText;
-use Emgag\VGWort\v1_11\newMessageRequest;
-use Emgag\VGWort\v1_11\Parties;
-use Emgag\VGWort\v1_11\Text;
-use Emgag\VGWort\v1_11\Webrange;
-use Emgag\VGWort\v1_11\Webranges;
+use Emgag\VGWort\v1_13\Authors;
+use Emgag\VGWort\v1_13\Involved;
+use Emgag\VGWort\v1_13\MessageText;
+use Emgag\VGWort\v1_13\newMessageRequest;
+use Emgag\VGWort\v1_13\Parties;
+use Emgag\VGWort\v1_13\Text;
+use Emgag\VGWort\v1_13\Webrange;
+use Emgag\VGWort\v1_13\Webranges;
 
 /**
  * Request package to send to VG Wort Message API
@@ -20,6 +20,7 @@ class MessageRequest
     const MESSAGE_TEXT = 1;
     const WEBRANGES = 2;
 
+    /** @var newMessageRequest */
     protected $newMessageRequest;
 
     /**
@@ -65,13 +66,13 @@ class MessageRequest
             return [];
         }
 
-        $authorCollection = [];
+        $involved = [];
         foreach ($authors as $author) {
-            $authorCollection[] = $this->createInvolved($author);
+            $involved[] = $this->createInvolved($author);
         }
 
-        $authors = new Authors($authorCollection, null);
-        $messageData[self::PARTIES] = new Parties($authors, null);
+        $authors = new Authors($involved);
+        $messageData[self::PARTIES] = new Parties($authors);
 
         // Text
         if (!($text = $data['text']) || empty($text) || !($title = $data['title']) || empty($title)) {
@@ -82,12 +83,17 @@ class MessageRequest
         $messageData[self::MESSAGE_TEXT] = new MessageText($title, $text, false);
 
         // Webranges
-        if (!($url = $data['url']) || empty($url)) {
+        if (!($urls = $data['urls']) || empty($urls)) {
             return [];
         }
 
-        $webrange = new Webrange([$url]);
-        $messageData[self::WEBRANGES] = new Webranges([$webrange]);
+        $webranges = [];
+
+        foreach ($urls as $urlItem) {
+            $webranges[] = new Webrange(is_array($urlItem) ? $urlItem : [$urlItem]);
+        }
+
+        $messageData[self::WEBRANGES] = new Webranges($webranges);
 
         return $messageData;
     }
@@ -98,7 +104,8 @@ class MessageRequest
      */
     private function createInvolved(array $data): Involved
     {
-        $involved = new Involved($data['firstName'], $data['surName'], $data['cardNumber'], null);
+        $involved = new Involved($data['firstName'], $data['surName'], null);
+        $involved->setCardNumber($data['cardNumber']);
 
         return $involved;
     }

@@ -19,7 +19,7 @@ class MessageService
      */
     public function __construct($username, $password)
     {
-        $this->messageService = new \Emgag\VGWort\v1_11\MessageService([
+        $this->messageService = new \Emgag\VGWort\v1_13\MessageService([
             "authentication"     => SOAP_AUTHENTICATION_BASIC,
             "login"              => $username,
             "password"           => $password,
@@ -34,21 +34,21 @@ class MessageService
      * @param array  $authors
      * @param string $title
      * @param string $text
-     * @param string $url
+     * @param array  $urls
      * @return MessageResponse|null
      */
-    public function newMessage(string $id, array $authors, string $title, string $text, string $url): ?MessageResponse
+    public function newMessage(string $id, array $authors, string $title, string $text, array $urls): ?MessageResponse
     {
-        if (empty($id) || count($authors) < 1 || empty($title) || empty($text) || empty($url)) {
+        if (empty($id) || count($authors) < 1 || empty($title) || empty($text) || count($urls) < 1) {
             return null;
         }
-        
+
         $messageRequest = new MessageRequest([
             "id"      => $id,
             "authors" => $authors,
             "title"   => $title,
             "text"    => $text,
-            "url"     => $url
+            "urls"    => $urls
         ]);
 
         $messageResponse = new MessageResponse();

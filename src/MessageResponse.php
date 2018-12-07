@@ -2,35 +2,25 @@
 
 namespace Emgag\VGWort;
 
-use Emgag\VGWort\v1_11\newMessageFault;
-use Emgag\VGWort\v1_11\newMessageResponse;
+use Emgag\VGWort\v1_13\newMessageResponse;
 
 /**
  * Response package that comes from the VG Wort Message API
  */
 class MessageResponse
 {
+    /** @var newMessageResponse */
     protected $newMessageResponse;
-    protected $newMessageFault;
 
-    /**
-     * MessageResponse constructor.
-     *
-     * @param newMessageResponse $newMessageResponse
-     * @param newMessageFault $newMessageFault
-     */
-    public function __construct($newMessageResponse = null, $newMessageFault = null)
-    {
-        $this->newMessageResponse = $newMessageResponse;
-        $this->newMessageFault = $newMessageFault;
-    }
+    /** @var string */
+    protected $newMessageError;
 
     /**
      * @return bool
      */
     public function isValid(): bool
     {
-        return !is_null($this->newMessageResponse) && is_null($this->newMessageFault);
+        return !is_null($this->newMessageResponse) && is_null($this->newMessageError);
     }
 
     /**
@@ -42,7 +32,7 @@ class MessageResponse
             return null;
         }
 
-        return $this->newMessageFault->newMessageFault->errormsg;
+        return $this->newMessageError;
     }
 
     /**
@@ -54,10 +44,20 @@ class MessageResponse
     }
 
     /**
-     * @param newMessageFault $newMessageFault
+     * @param $error
      */
-    public function error(newMessageFault $newMessageFault)
+    public function error($error)
     {
-        $this->newMessageFault = $newMessageFault;
+        if ($error == null) {
+            return;
+        }
+
+        if (isset($error->newMessageFault)) {
+            $this->newMessageError = $error->newMessageFault->errormsg;
+        } elseif (isset($error->ValidationError)) {
+            $this->newMessageError = $error->ValidationError;
+        } else {
+            $this->newMessageError = 'Unknown error';
+        }
     }
 }
