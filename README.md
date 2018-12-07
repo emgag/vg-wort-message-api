@@ -26,8 +26,27 @@ $response = $messageService->newMessage(
     ],
     $title, // Title of this message
     $text, // Text of this message (plain text)
-    $url // URL of this message
+    $urls // URLs of this message
 );
+```
+## URLs
+It's possible to provide multiple URLs (or Webranges). The URLs ``$urls`` could be in one of these formats:
+- As an simple array.
+```PHP
+$urls = [
+    "http://example.com/path/to/file.html"
+];
+```
+- As an multi-dimensional array. The keys will be ignored.
+```PHP
+$urls = [
+    "page-1" => [
+        "http://example-1.com/path/to/file.html"
+    ],
+    "page-2" => [
+        "http://example-2.com/path/to/file.html"
+    ]
+];
 ```
 
 ## License
