@@ -24,9 +24,9 @@ class MessageResponse
     }
 
     /**
-     * @return null|string
+     * @return null|string|array
      */
-    public function errorMessage(): ?string
+    public function errorMessage()
     {
         if ($this->isValid()) {
             return null;
