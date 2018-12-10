@@ -105,7 +105,10 @@ class MessageRequest
     private function createInvolved(array $data): Involved
     {
         $involved = new Involved($data['firstName'], $data['surName'], null);
-        $involved->setCardNumber($data['cardNumber']);
+
+        if(isset($data['cardNumber'])){
+            $involved->setCardNumber($data['cardNumber']);
+        }
 
         return $involved;
     }
