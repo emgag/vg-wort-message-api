@@ -79,7 +79,7 @@ class MessageRequest
             return [];
         }
 
-        $text                            = new Text(null, base64_encode($text), null);
+        $text                            = new Text(null, $text, null);
         $messageData[self::MESSAGE_TEXT] = new MessageText($title, $text, false);
 
         // Webranges
