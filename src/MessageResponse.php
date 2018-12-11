@@ -2,7 +2,7 @@
 
 namespace Emgag\VGWort;
 
-use Emgag\VGWort\v1_13\newMessageResponse;
+use Emgag\VGWort\MessageService\newMessageResponse;
 
 /**
  * Response package that comes from the VG Wort Message API
