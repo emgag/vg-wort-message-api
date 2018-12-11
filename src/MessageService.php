@@ -2,8 +2,6 @@
 
 namespace Emgag\VGWort;
 
-use SoapFault;
-
 /**
  * Service for using the VG Wort Message API
  */
@@ -56,8 +54,8 @@ class MessageService
         try {
             $response = $this->messageService->newMessage($messageRequest->get());
             $messageResponse->success($response);
-        } catch (SoapFault $exception) {
-            $messageResponse->error($exception->detail);
+        } catch (\Exception $exception) {
+            $messageResponse->error($exception->getMessage());
         }
 
         return $messageResponse;

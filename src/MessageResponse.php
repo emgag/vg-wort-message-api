@@ -52,12 +52,6 @@ class MessageResponse
             return;
         }
 
-        if (isset($error->newMessageFault)) {
-            $this->newMessageError = $error->newMessageFault->errormsg;
-        } elseif (isset($error->ValidationError)) {
-            $this->newMessageError = $error->ValidationError;
-        } else {
-            $this->newMessageError = 'Unknown error';
-        }
+        $this->newMessageError = $error;
     }
 }
