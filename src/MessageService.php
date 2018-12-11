@@ -55,7 +55,11 @@ class MessageService
             $response = $this->messageService->newMessage($messageRequest->get());
             $messageResponse->success($response);
         } catch (\Exception $exception) {
-            $messageResponse->error($exception->getMessage());
+            if(isset($exception->detail)){
+                $messageResponse->error($exception->detail);
+            } else {
+                $messageResponse->error($exception->getMessage());
+            }
         }
 
         return $messageResponse;
