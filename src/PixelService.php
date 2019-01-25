@@ -51,13 +51,12 @@ class PixelService
             $request  = new Request($offset, $type);
             $response = $this->pixelService->pixelOverview($request);
 
-            $pixels = array_merge($pixels, $response->privateIdentificationId);
-
             if ($response->amount < 1) {
                 break;
-            } else {
-                $offset += $response->amount;
             }
+
+            $pixels = array_merge($pixels, $response->privateIdentificationId);
+            $offset += $response->amount;
         }
 
         return $pixels;
