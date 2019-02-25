@@ -51,7 +51,7 @@ class PixelService
             $request  = new Request($offset, $type);
             $response = $this->pixelService->pixelOverview($request);
 
-            if ($response->amount < 1) {
+            if ($response->amount < 1 || !is_array($response->privateIdentificationId)) {
                 break;
             }
 
