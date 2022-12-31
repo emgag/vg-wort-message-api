@@ -1,7 +1,8 @@
 # vg-wort-message-api
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/emgag/vg-wort-message-api.svg?style=flat-square)](https://packagist.org/packages/emgag/vg-wort-message-api)
+**WARNING**: This library is no longer maintained and doesn't work with the current VG Wort METIS API version.
+
+---
 
 A plugin to simplify the creation and submission of VG Wort METIS messages. Works with the official T.O.M. WebServices.
 
